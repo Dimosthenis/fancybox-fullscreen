@@ -103,6 +103,7 @@
 }
 
 .fancybox-fs {
+	background-position: 0 -152px;
 	position: absolute;
 	top: -18px;
 	left: -18px;
