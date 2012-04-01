@@ -38,7 +38,7 @@
 	width: 100%;
 	height: 100%;
 	padding: 0;
-	margin: 0;
+	margin: 0 auto;
 	position: relative;
 	outline: none;
 	overflow: hidden;
@@ -70,7 +70,7 @@
 	max-height: 100%;
 }
 
-#fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
+#fancybox-loading, .fancybox-close, .fancybox-fs, .fancybox-prev span, .fancybox-next span {
 	background-image: url('fancybox_sprite.png');
 }
 
@@ -96,6 +96,16 @@
 	position: absolute;
 	top: -18px;
 	right: -18px;
+	width: 36px;
+	height: 36px;
+	cursor: pointer;
+	z-index: 1004;
+}
+
+.fancybox-fs {
+	position: absolute;
+	top: -18px;
+	left: -18px;
 	width: 36px;
 	height: 36px;
 	cursor: pointer;

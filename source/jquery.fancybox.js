@@ -87,6 +87,7 @@
 				swf: '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%"><param name="wmode" value="transparent" /><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="{href}" /><embed src="{href}" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="100%" height="100%" wmode="transparent"></embed></object>',
 				error: '<p class="fancybox-error">The requested content cannot be loaded.<br/>Please try again later.</p>',
 				closeBtn: '<div title="Close" class="fancybox-item fancybox-close"></div>',
+				fsBtn: '<div title="Full Screen" class="fancybox-item fancybox-fs"></div>',
 				next: '<a title="Next" class="fancybox-nav fancybox-next"><span></span></a>',
 				prev: '<a title="Previous" class="fancybox-nav fancybox-prev"><span></span></a>'
 			},
@@ -117,6 +118,11 @@
 			prevSpeed: 300,
 			prevEasing: 'swing',
 			prevMethod: 'changeOut',
+			
+			// Support for FullScreen API 
+			// https://developer.mozilla.org/en/DOM/Using_full-screen_mode
+			// Added by Pascal Meunier for Aeris Lab < pm@aeris.pro >
+			fsBtn: false,
 
 			// Enabled helpers
 			helpers: {
@@ -241,6 +247,34 @@
 
 				F.transitions[F.current.closeMethod]();
 			}
+		},
+		
+		fullscreen: function (a) {
+
+			// Callback function.
+			var fullscreen_callback = function (b) {
+				if (b === true) {
+					// Disable buttons.
+					$('.fancybox-item').hide();
+					$('.fancybox-nav').hide();
+				}
+				else {
+					// Enable buttons.
+					$('.fancybox-item').show();
+					$('.fancybox-nav').show();
+
+				}
+				//console.log(b);
+			};
+
+			// Check if fullscreen plugin is enabled.
+			if($.support.fullscreen){
+				$('.fancybox-wrap').fullScreen({callback: fullscreen_callback });
+			}
+			else {
+				alert('Error, no fullscreen jQuery plugin found.');
+			}
+			
 		},
 
 		// Start/stop slideshow
@@ -1083,6 +1117,11 @@
 			//Create a close button
 			if (current.closeBtn) {
 				$(current.tpl.closeBtn).appendTo(F.outer).bind('click.fb', F.close);
+			}
+			
+			//Create a fullscreen button
+			if (current.fsBtn) {
+				$(current.tpl.fsBtn).appendTo(F.outer).bind('click.fb', F.fullscreen);
 			}
 
 			//Create navigation arrows
