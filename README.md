@@ -35,7 +35,7 @@ Initialise the script like this:
 
     <script>
         $(document).ready(function() {
-            $('.fancybox').fancybox();
+            $('.fancybox').fancybox({fsBtn:true});
         });
     </script>
 
