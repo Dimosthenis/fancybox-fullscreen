@@ -1,10 +1,10 @@
 fancyBox 2 with Fullscreen
 ========
 
-We had the feeling fancyBox has to support the new "fullscreen" mode enabled in recent browsers
-(Chrome, Safari and Firefox). That's why we made it!
+We had the feeling fancyBox has to support the new "fullscreen" mode enabled in some recent browsers.
+That's why we made it!
 
-Please note that the developement is in early stage, please consider this as a BETA test.
+Please note that the development is in early stage, you may consider this as very BETA code.
 
 More information on fancyBox 2: http://www.fancyapps.com/fancybox/
 
